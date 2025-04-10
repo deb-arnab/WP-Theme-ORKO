@@ -5,10 +5,10 @@ function orko_contact_form_shortcode() {
     ob_start();
 
     // Include the contact form HTML
-    include(get_template_directory() . '/template_part/contact_form.php');
+    get_template_part('/template_part/contact_form');
 
     // Include the form handling logic
-    include_once('contact_form_handle.php');
+    get_template_part('contact_form_handle');
 
     // Return the content of the form
     return ob_get_clean();

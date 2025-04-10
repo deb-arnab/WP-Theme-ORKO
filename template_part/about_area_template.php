@@ -1,4 +1,4 @@
-<section id="about_area" class="about_area" style="background-image: url('<?php echo esc_url(get_theme_mod('orko_about_background_image', get_bloginfo('template_directory') . '/assets/img/default-hero.jpg')); ?>');">
+<section id="about_area" class="about_area" style="background-image: url('<?php echo esc_url(get_theme_mod('orko_about_background_image', get_template_directory_uri() . '/assets/img/default-hero.jpg')); ?>');">
     <div class="container">
         <div class="row text-center">
             <?php

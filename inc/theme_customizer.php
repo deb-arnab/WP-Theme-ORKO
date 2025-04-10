@@ -37,7 +37,7 @@ function orko_customize_register($wp_customize)
     ================================================================================*/
 
     $wp_customize->add_section('orko_theme_colors_section', array(
-        'title'       => __('Theme Colors', 'orko'), // Section title
+        'title'       => __('Theme Colors & Fonts', 'orko'), // Section title
         'description' => __('Customize the theme colors', 'orko'), // Section description
         'panel'       => 'orko_theme_sections_panel', // Assign to the panel
     ));
@@ -46,6 +46,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_primary_color', array(
         'default'   => '#187dbc', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_hex_color',
     ));
 
     // Add control for primary color
@@ -59,6 +60,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_secondary_color', array(
         'default'   => '#ffd700', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_hex_color',
     ));
 
     // Add control for secondary color
@@ -72,6 +74,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_custom_color', array(
         'default'   => '#ffffff', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_hex_color',
     ));
 
     // Add control for custom color
@@ -85,6 +88,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_text_color1', array(
         'default'   => '#161616', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_hex_color',
     ));
 
     // Add control for text color 1
@@ -98,6 +102,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_text_color2', array(
         'default'   => '#666666', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_hex_color',
     ));
 
     // Add control for text color 2
@@ -111,6 +116,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_background_color1', array(
         'default'   => '#f4f4f4', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_text_field',
     ));
 
     // Add control for background color 1
@@ -124,30 +130,49 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_font_family1', array(
         'default'   => "'Oswald', sans-serif", // Default value
         'transport' => 'refresh', // Transport method
+        // 'sanitize_callback' => 'sanitize_key', 
     ));
 
     // Add control for font family 1
     $wp_customize->add_control('orko_font_family1', array(
-        'label'    => __('Font Family 1', 'orko'), // Label for the control
-        'section'  => 'orko_theme_colors_section', // Section to add the control to
-        'settings' => 'orko_font_family1', // Setting to link the control to
-        'type'     => 'text', // Control type
+        'label'    => __('Font Family 1', 'orko'),
+        'section'  => 'orko_theme_colors_section',
+        'settings' => 'orko_font_family1',
+        'type'     => 'select',
+        'choices'  => array(
+            "'Oswald', sans-serif" => 'Oswald',
+            "'Roboto', sans-serif" => 'Roboto',
+            "'Lato', sans-serif" => 'Lato',
+            "'Montserrat', sans-serif" => 'Montserrat',
+            "'Poppins', sans-serif" => 'Poppins',
+            "'Arial', sans-serif" => 'Arial',
+            "'Times New Roman', serif" => 'Times New Roman',
+        ),
     ));
 
     // Add setting for font family 2
     $wp_customize->add_setting('orko_font_family2', array(
         'default'   => "'Roboto', sans-serif", // Default value
         'transport' => 'refresh', // Transport method
+    //    'sanitize_callback' => 'sanitize_key', 
     ));
 
     // Add control for font family 2
     $wp_customize->add_control('orko_font_family2', array(
-        'label'    => __('Font Family 2', 'orko'), // Label for the control
-        'section'  => 'orko_theme_colors_section', // Section to add the control to
-        'settings' => 'orko_font_family2', // Setting to link the control to
-        'type'     => 'text', // Control type
+        'label'    => __('Font Family 2', 'orko'),
+        'section'  => 'orko_theme_colors_section',
+        'settings' => 'orko_font_family2',
+        'type'     => 'select',
+        'choices'  => array(
+            "'Oswald', sans-serif" => 'Oswald',
+            "'Roboto', sans-serif" => 'Roboto',
+            "'Lato', sans-serif" => 'Lato',
+            "'Montserrat', sans-serif" => 'Montserrat',
+            "'Poppins', sans-serif" => 'Poppins',
+            "'Arial', sans-serif" => 'Arial',
+            "'Times New Roman', serif" => 'Times New Roman',
+        ),
     ));
-    
     /*================================================================================
 
                             Add a section for Theme Header 
@@ -164,8 +189,9 @@ function orko_customize_register($wp_customize)
 
     // Add setting for logo upload
     $wp_customize->add_setting('orko_header_logo', array(
-        'default'   => get_bloginfo('template_directory') . '/assets/img/default-logo.png', // Default value
+        'default'   => get_template_directory_uri() . '/assets/img/default-logo.png', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'esc_url_raw', // Ensure it's a valid URL
        
     ));
 
@@ -181,6 +207,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_sticky_header', array(
         'default'   => false, // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_checkbox', // Ensures it's either true or false
     ));
 
     // Add control for sticky header
@@ -208,8 +235,9 @@ function orko_customize_register($wp_customize)
 
     // Add setting for hero background image
     $wp_customize->add_setting('orko_hero_background_image', array(
-        'default'   => get_bloginfo('template_directory') . '/assets/img/default-hero.jpg', // Default value
+        'default'   => get_template_directory_uri() . '/assets/img/default-hero.jpg', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'esc_url_raw', // Ensure it's a valid URL
        
     ));
 
@@ -224,6 +252,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_hero_content_title', array(
         'default'   => __('Welcome to Orko Theme', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize plain text input
        
     ));
 
@@ -239,6 +268,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_hero_content_description', array(
         'default'   => __('Discover the amazing features of our theme.', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_textarea_field', // Sanitize textarea content
        
     ));
 
@@ -254,6 +284,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_hero_button_text', array(
         'default'   => __('Get Started', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize plain text input
        
     ));
 
@@ -269,6 +300,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_hero_button_link', array(
         'default'   => home_url('/'), // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'esc_url_raw', // Sanitize URL
        
     ));
 
@@ -298,7 +330,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_services_section_title', array(
         'default'   => __('Our Services', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
-       
+       'sanitize_callback' => 'sanitize_text_field', // Sanitize plain text input
     ));
 
     // Add control for services section title
@@ -312,7 +344,8 @@ function orko_customize_register($wp_customize)
     // Add setting for services section description
     $wp_customize->add_setting('orko_services_section_description', array(
         'default'   => __('Explore the services we offer to our clients.', 'orko'), // Default value
-       
+        'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_textarea_field', // Sanitize textarea input
     ));
 
     // Add control for services section description
@@ -340,8 +373,9 @@ function orko_customize_register($wp_customize)
 
     // Add setting for about section background image
     $wp_customize->add_setting('orko_about_background_image', array(
-        'default'   => get_bloginfo('template_directory') . '/assets/img/default-about-bg.jpg', // Default value   
+        'default'   => get_template_directory_uri() . '/assets/img/default-about-bg.jpg', // Default value   
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'esc_url_raw', // Ensure it's a valid URL
        
     ));
 
@@ -356,25 +390,31 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_about_number_of_counters', array(
         'default'   => 2, // Default number of counters
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'absint', // Sanitize as an integer
        
     ));
 
     // Add control for number of counters
     $wp_customize->add_control('orko_about_number_of_counters', array(
-        'label'    => __('Number of Counters', 'orko'), // Label for the control
-        'description' => __('Set the number of counters & refresh to display in the section. ', 'orko'), // Control description
-        'section'  => 'orko_about_section', // Section to add the control to
-        'settings' => 'orko_about_number_of_counters', // Setting to link the control to
-        'type'     => 'number', // Control type
+        'label'       => __('Number of Counters', 'orko'), // Label for the control
+        'description' => __('Set the number of counters & refresh to display in the section.', 'orko'), // Control description
+        'section'     => 'orko_about_section', // Section to add the control to
+        'settings'    => 'orko_about_number_of_counters', // Setting to link the control to
+        'type'        => 'number', // Control type
+        'input_attrs' => array(
+            'min' => 1, // Ensure at least 1 counter
+            'max' => 3, // Limit maximum counters to 3
+        ),
     ));
 
     // Dynamically add settings and controls for each counter
-    $number_of_counters = get_theme_mod('orko_about_number_of_counters', 3);
+    $number_of_counters = get_theme_mod('orko_about_number_of_counters', 2);
     for ($i = 1; $i <= $number_of_counters; $i++) {
         // Add setting for counter number
         $wp_customize->add_setting("orko_about_counter_number_$i", array(
             'default'   => '100', // Default value
             'transport' => 'refresh', // Transport method
+            'sanitize_callback' => 'sanitize_text_field', // Sanitize as text
         ));
 
         // Add control for counter number
@@ -389,7 +429,7 @@ function orko_customize_register($wp_customize)
         $wp_customize->add_setting("orko_about_counter_suffix_$i", array(
             'default'   => '+', // Default value
             'transport' => 'refresh', // Transport method
-           
+           'sanitize_callback' => 'sanitize_key', // Sanitize as a valid key (string)
         ));
 
         // Add control for counter suffix
@@ -408,7 +448,7 @@ function orko_customize_register($wp_customize)
         $wp_customize->add_setting("orko_about_counter_title_$i", array(
             'default'   => __("Title $i", 'orko'), // Default value
             'transport' => 'refresh', // Transport method
-           
+           'sanitize_callback' => 'sanitize_text_field', // Sanitize as text
         ));
 
         // Add control for counter title
@@ -438,6 +478,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_meet_us_section_title', array(
         'default'   => __('Meet Our Team', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize as text
     ));
 
     // Add control for Meet Us section title
@@ -452,6 +493,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_meet_us_section_description', array(
         'default'   => __('Get to know the amazing people behind our success.', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'sanitize_textarea_field', // Sanitize as textarea
     ));
 
     // Add control for Meet Us section description
@@ -476,8 +518,9 @@ function orko_customize_register($wp_customize)
 
     // Add setting for clients section background image
     $wp_customize->add_setting('orko_clients_background_image', array(
-        'default'   => get_bloginfo('template_directory') . '/assets/img/default-clients-bg.jpg', // Default value
+        'default'   => get_template_directory_uri() . '/assets/img/default-clients-bg.jpg', // Default value
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'esc_url_raw', // Sanitize the URL
        
     ));
 
@@ -492,6 +535,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_number_of_client_logos', array(
         'default'   => 6, // Default number of logos
         'transport' => 'refresh', // Transport method
+        'sanitize_callback' => 'absint', // Ensure the number is an integer
        
     ));
 
@@ -502,16 +546,20 @@ function orko_customize_register($wp_customize)
         'section'  => 'orko_clients_section', // Section to add the control to
         'settings' => 'orko_number_of_client_logos', // Setting to link the control to
         'type'     => 'number', // Control type
+        'input_attrs' => array(
+            'min' => 1, // Ensure at least 1 counter
+            'max' => 12, // Limit maximum counters to 12
+        ),
     ));
 
     // Dynamically add settings and controls for each client logo
-    $number_of_client_logos = get_theme_mod('orko_number_of_client_logos', 10);
+    $number_of_client_logos = get_theme_mod('orko_number_of_client_logos', 6);
     for ($i = 1; $i <= $number_of_client_logos; $i++) {
         // Add setting for client logo
         $wp_customize->add_setting("orko_client_logo_$i", array(
-            'default'   => get_bloginfo('template_directory') . '/assets/img/default-client-logo.png', // Default value
+            'default'   => get_template_directory_uri() . '/assets/img/default-client-logo.png', // Default value
             'transport' => 'refresh', // Transport method
-           
+           'sanitize_callback' => 'esc_url_raw', // Sanitize the URL
         ));
 
         // Add control for client logo
@@ -538,7 +586,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_testimonials_section_title', array(
         'default'   => __('What Our Clients Say', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
-       
+       'sanitize_callback' => 'sanitize_text_field', // Sanitize the text input
     ));
 
     // Add control for testimonials section title
@@ -553,7 +601,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_testimonials_section_description', array(
         'default'   => __('See what our clients have to say about us.', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'sanitize_textarea_field', // Sanitize the textarea input
     ));
 
     // Add control for testimonials section description
@@ -570,7 +618,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_enable_quote_icon', array(
         'default'   => false, // Default value
         'transport' => 'refresh', // Transport method
-       
+       'sanitize_callback' => 'sanitize_checkbox', // Sanitize the checkbox input
     ));
 
     // Add control for enabling quote icon
@@ -598,7 +646,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_section_title', array(
         'default'   => __('Get In Touch', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize the text input
     ));
     // Add control for contact section title
     $wp_customize->add_control('orko_contact_section_title', array(
@@ -612,7 +660,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_section_description', array(
         'default'   => __('We would love to hear from you. Get in touch with us!', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'sanitize_textarea_field', // Sanitize the textarea input
     ));
     // Add control for contact section description
     $wp_customize->add_control('orko_contact_section_description', array(
@@ -623,10 +671,11 @@ function orko_customize_register($wp_customize)
     ));
     // Add setting for contact section background image
     $wp_customize->add_setting('orko_contact_background_image', array(
-        'default'   => get_bloginfo('template_directory') . '/assets/img/default-contact-bg.jpg', // Default value
+        'default'   => get_template_directory_uri() . '/assets/img/default-contact-bg.jpg', // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'esc_url_raw', // Sanitize URL
     ));
+
     // Add control for contact section background image
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'orko_contact_background_image', array(
         'label'    => __('Upload Contact Section Background Image', 'orko'), // Label for the control
@@ -637,7 +686,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_button_text', array(
         'default'   => __('Contact Us', 'orko'), // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize the text input
     ));
     // Add control for contact section button text
     $wp_customize->add_control('orko_contact_button_text', array(
@@ -650,7 +699,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_button_link', array(
         'default'   => home_url('/'), // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'esc_url_raw', // Sanitize URL
     ));
     // Add control for contact section button link
     $wp_customize->add_control('orko_contact_button_link', array(
@@ -664,7 +713,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_button_icon', array(
         'default'   => 'fa-solid fa-paper-plane', // Default value
         'transport' => 'refresh', // Transport method
-       
+        'sanitize_callback' => 'sanitize_text_field', // Sanitize the text input for icon class
     ));
     // Add control for contact section button icon
     $wp_customize->add_control('orko_contact_button_icon', array(
@@ -684,7 +733,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_button_icon_size', array(
         'default'   => '20px', // Default value
         'transport' => 'refresh', // Transport method
-       
+       'sanitize_callback' => 'sanitize_text_field', // Sanitize the text input
     ));
     // Add control for contact section button icon size
     $wp_customize->add_control('orko_contact_button_icon_size', array(
@@ -697,7 +746,7 @@ function orko_customize_register($wp_customize)
     $wp_customize->add_setting('orko_contact_button_icon_position', array(
         'default'   => 'left', // Default value
         'transport' => 'refresh', // Transport method
-       
+       'sanitize_callback' => 'sanitize_text_field', // Sanitize the text input
     ));
     // Add control for contact section button icon position
     $wp_customize->add_control('orko_contact_button_icon_position', array(
@@ -728,7 +777,8 @@ function orko_customize_register($wp_customize)
     // Add setting for copyright text
     $wp_customize->add_setting('orko_footer_copyright', array(
         'default'   => '&copy; ' . date('Y') . ' | Arnab Deb, All rights reserved.', // Default value
-       
+       'transport'         => 'refresh', // Transport method
+    'sanitize_callback' => 'wp_kses_post', // Sanitize HTML content (allows safe HTML tags)
     ));
 
     // Add control for copyright text
@@ -748,14 +798,14 @@ function orko_theme_colors_section(){
     ?>
     <style>
     :root {
-        --primary-color: <?php echo get_theme_mod('orko_primary_color', '#187dbc'); ?>;
-        --secondary-color: <?php echo get_theme_mod('orko_secondary_color', '#ffd700'); ?>;
-        --custom-color: <?php echo get_theme_mod('orko_custom_color', '#ffffff'); ?>;
-        --text-color1: <?php echo get_theme_mod('orko_text_color1', '#161616'); ?>;
-        --text-color2: <?php echo get_theme_mod('orko_text_color2', '#666666'); ?>;
-        --background-color1: <?php echo get_theme_mod('orko_background_color1', '#f4f4f4'); ?>;
-        --font-family1: <?php echo get_theme_mod('orko_font_family1', "'Oswald', sans-serif"); ?>;
-        --font-family2: <?php echo get_theme_mod('orko_font_family2', "'Roboto', sans-serif"); ?>;
+        --primary-color: <?php  echo esc_attr( get_theme_mod('orko_primary_color', '#187dbc')); ?>;
+        --secondary-color: <?php  echo esc_attr( get_theme_mod('orko_secondary_color', '#ffd700')); ?>;
+        --custom-color: <?php  echo esc_attr( get_theme_mod('orko_custom_color', '#ffffff')); ?>;
+        --text-color1: <?php  echo esc_attr( get_theme_mod('orko_text_color1', '#161616')); ?>;
+        --text-color2: <?php  echo esc_attr(get_theme_mod('orko_text_color2', '#666666')); ?>;
+        --background-color1: <?php  echo esc_attr(get_theme_mod('orko_background_color1', '#f4f4f4')); ?>;
+        --font-family1: <?php  echo get_theme_mod('orko_font_family1', "'Oswald', sans-serif")?>;
+        --font-family2: <?php  echo get_theme_mod('orko_font_family2', "'Roboto', sans-serif")?>;
     }
     body {
         color: var(--text-color1);

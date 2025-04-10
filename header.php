@@ -56,8 +56,8 @@
         <div class="container-fluid justify-content-between">
 
             <!-- Logo (LEFT) -->
-            <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                <img src="<?php echo get_theme_mod('orko_header_logo'); ?>" alt="Logo" class="img-fluid" style="max-height: 60px;">
+            <a class="navbar-brand" href="<?php echo  esc_url(home_url()); ?>">
+                <img src="<?php echo esc_html(get_theme_mod('orko_header_logo')); ?>" alt="Logo" class="img-fluid" style="max-height: 60px;">
             </a>
 
             <!-- Toggler (appears on small screens) -->

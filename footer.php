@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class=col-md-12>
-                    <?php echo get_theme_mod('orko_footer_copyright'); ?>
+                    <?php echo esc_html( get_theme_mod('orko_footer_copyright') ); ?>
                 </div>
             </div>
         </div>

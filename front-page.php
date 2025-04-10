@@ -14,7 +14,7 @@ Hero Area Section
 This section displays the hero area with a customizable background image, title, description, and button.
 The content and styles are dynamically fetched from the WordPress Customizer settings.
 -->
-<section id="hero_area" class="hero_area" style="background-image: url('<?php echo get_theme_mod('orko_hero_background_image'); ?>');">
+<section id="hero_area" class="hero_area" style="background-image: url('<?php echo  esc_html( get_theme_mod('orko_hero_background_image') ); ?>');">
     <div class="hero_content">
         <h1><?php echo esc_html(get_theme_mod('orko_hero_content_title', __('Welcome to Orko Theme', 'orko'))); ?></h1>
         <p><?php echo esc_html(get_theme_mod('orko_hero_content_description', __('Discover the amazing features of our theme.', 'orko'))); ?></p>
