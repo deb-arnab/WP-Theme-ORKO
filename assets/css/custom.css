@@ -1,0 +1,1495 @@
+/* =============================================
+    General Styles 
+============================================= */
+:root {
+    --primary-color: #187dbc;
+    --secondary-color: #ffd700;
+    --custom-color: #ffffff;
+    --text-color1: #161616;
+    --text-color2: #666666;
+    --background-color1: #f4f4f4;
+    --font-family1: 'Oswald', sans-serif;
+    --font-family2: 'Roboto', sans-serif;
+
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family1);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color1);
+    background-color: var(--background-color1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family2);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--text-color1);
+}
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: var(--text-color1);
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =============================================
+    Header Area Styles 
+============================================= */
+
+/* Always show header */
+#header_area {
+ 
+    background: var(--text-color1);
+    z-index: 10;
+    font-family: var(--font-family1);
+    transition: background-color 3s ease-in-out;
+    position: relative; /* Make sure it's visible */
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+/* Logo image responsive */
+.navbar-brand img {
+    max-height: 60px;
+    object-fit: contain;
+}
+
+/* Align items in navbar */
+#header_area .navbar-nav {
+    align-items: center;
+    gap: 20px;
+}
+
+#header_area .navbar-nav a {
+    color: var(--custom-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    transition: color 0.5s ease-in-out;
+}
+
+#header_area .navbar-nav a:hover {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+
+}
+
+/* Style the toggler button */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+    position: relative;
+    width: 32px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove border and outline when focused or active */
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+/* Custom hamburger icon */
+.navbar-toggler-icon {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--custom-color); /* Match your text color */
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--custom-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+
+.dropdown-menu {
+    background-color: var(--text-color2);
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+#header_area .navbar-nav .dropdown-menu a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+}
+#header_area .navbar-nav .dropdown-menu a:hover {
+    background-color: var(--primary-color);
+    color: var(--custom-color);
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+
+}
+
+.dropdown-menu a {
+    padding: 10px 20px;
+    display: block;
+    text-transform: uppercase;
+}
+
+
+/* Style for submenus (dropdown within dropdown) */
+.dropdown-submenu {
+    position: relative;
+
+
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    border-radius: 0;
+    background-color: var(--text-color2);
+}
+
+
+/* Hover fix for touch */
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+/* =============================================
+    Hero Area Styles
+============================================= */
+#hero_area {
+    margin-top: -100px;
+    width: 100%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--text-color1);
+    background-size: cover;
+    color: var(--custom-color);;
+    text-align: center;
+    position: relative;
+}
+#hero_area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+#hero_area .hero_content {
+    position: relative;
+    z-index: 2;
+}
+#hero_area .hero_content h1 {
+    color: var(--custom-color);
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#hero_area .hero_content p {
+    color: var(--custom-color);
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px 0 0;
+    max-width: 800px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero_content a{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    border: 3px solid var(--secondary-color); /* Green */
+   
+    border-radius: 5px;
+    color: var(--custom-color);
+    font-family: var(--font-family2);
+    transition: transform 0.5s ease;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    
+}
+
+
+.hero_content a:hover {
+    transform: translateY(-2px);
+    color: var(--custom-color);;
+    border: 3px solid var(--primary-color); /* Green */
+}
+
+/* =============================================
+    Features Area Styles
+============================================= */
+#services_area {
+    padding: 50px;
+    background-color: var(--background-color1);
+    margin-bottom: 20px;
+}
+#services_area .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+#services_area .col-md-12 {
+    margin-bottom: 40px;
+}
+#services_area .col-md-12 h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+#services_area .col-md-12.text-center p {
+    font-size: 18px;
+    color: var(--text-color2);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#services_area .service_item {
+    flex: 1 1 calc(33.333% - 10px);
+    box-sizing: border-box;
+    text-align: center;
+    background: var(--custom-color);;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin: 0 3px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+#services_area .service_item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+#services_area .service_icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+}
+#services_area .service_icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#services_area .service_title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+#services_area .service_description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color1);
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    #services_area .col-md-4 {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+@media (max-width: 768px) {
+    #services_area {
+        padding: 30px;
+    }
+    #services_area .col-md-4 {
+        flex: 1 1 100%;
+    }
+    #services_area .service_item {
+        margin-bottom: 3px;
+        padding: 15px;
+    }
+    #services_area .service_title {
+        font-size: 18px;
+    }
+    #services_area .service_description {
+        font-size: 14px;
+    }
+}
+@media (max-width: 480px) {
+    #services_area .service_icon {
+        width: 100px;
+        height: 100px;
+    }
+    #services_area .service_title {
+        font-size: 16px;
+    }
+    #services_area .service_description {
+        font-size: 12px;
+    }
+}
+
+/* =============================================
+    About Area Styles
+============================================= */
+#about_area {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+#about_area .container {
+    z-index: 2;
+}
+
+#about_area .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex-wrap: wrap;
+}
+
+#about_area .counter_item {
+    text-align: center;
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: 300px;
+}
+
+#about_area .counter_number h2,
+#about_area .counter_title p {
+    font-family: var(--font-family2);
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#about_area .counter_number h2 {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--secondary-color);
+}
+
+#about_area .counter_title p {
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: var(--custom-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* =============================================
+    Meet Us Area Styles
+============================================= */
+#meet_us_area {
+    padding: 50px 0;
+    background-color: var(--background-color1);
+}
+
+#meet_us_area h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+#meet_us_area p {
+    font-size: 18px;
+    color: var(--text-color2);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+#meet_us_area .employee_card {
+    display: flex;
+    align-items: center;
+    background: var(--custom-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+#meet_us_area .employee_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#meet_us_area .employee_picture {
+    flex: 0 0 150px;
+    height: 150px;
+    margin-right: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#meet_us_area .employee_picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#meet_us_area .employee_details {
+    flex: 1;
+}
+
+#meet_us_area .employee_details h3,
+#meet_us_area .employee_details h4,
+#meet_us_area .employee_details p {
+    margin: 0;
+}
+
+#meet_us_area .employee_details h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#meet_us_area .employee_details h4 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text-color2);
+}
+
+#meet_us_area .employee_details p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color1);
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#meet_us_area .employee_details a {
+    display: inline-block;
+    color: var(--primary-color);
+    font-size: 18px;
+    padding-right: 10px;
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+
+#meet_us_area .employee_details a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+#meet_us_area .col-md-12 {
+    margin-bottom: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #meet_us_area .employee_card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #meet_us_area .employee_picture {
+        margin: 0 auto 15px;
+        width: 60%;
+        height: auto;
+    }
+
+    #meet_us_area .employee_details h3,
+    #meet_us_area .employee_details h4,
+    #meet_us_area .employee_details p {
+        text-align: center;
+    }
+}
+
+/* =============================================
+    Clients Area Styles
+============================================= */
+#clients_area {
+    background: var(--background-color1) center/cover no-repeat fixed;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 50px 0;
+    overflow: hidden;
+}
+
+#clients_area h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.clients_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.client_logo_item {
+    flex: 0 0 auto;
+    width: 25%;
+    padding: 10px;
+    text-align: center;
+}
+
+.client_logo {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client_logo:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.client_logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* =============================================
+    Testimonials Area Styles
+============================================= */
+#testimonials_area {
+    padding: 50px 0;
+    background-color: var(--background-color1);
+}
+
+#testimonials_area h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+#testimonials_area p {
+    font-size: 18px;
+    color: var(--text-color2);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.testimonial_item {
+    text-align: center;
+    background: var(--custom-color);;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 800px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.testimonial_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial_message {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-color2);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.testimonial_rating i {
+    color: var(--secondary-color);
+    margin: 0 2px;
+}
+
+.testimonial_picture {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial_picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial_name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.testimonial_company {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color2);
+    margin-top: 5px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: var(--secondary-color);
+}
+
+.testimonial_quote_icon {
+    font-size: 30px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+/* =============================================
+    Contact Area Styles
+============================================= */
+
+#contact_area {
+    background: center/cover no-repeat fixed;
+    padding: 80px 20px;
+    color: var(--custom-color);;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+#contact_area::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+#contact_area .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+#contact_area h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#contact_area p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: var(--custom-color);
+}
+
+#contact_area a {
+    display: inline-block;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--custom-color);
+    text-transform: uppercase;
+    border: 3px solid var(--secondary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+
+}
+
+#contact_area a i {
+    margin: 0 5px;
+}
+
+#contact_area a:hover {
+    color: var(--custom-color);
+    transform: translateY(-3px);
+    border: 3px solid var(--primary-color);
+
+}
+
+
+/* =============================================
+    Blog Area Styles
+============================================= */
+#blog_area {
+    padding-top: 10px;
+    color: var(--text-color1);
+    
+}
+
+#blog_area .col-md-3,
+#blog_area .col-md-9,
+#blog_area .col-md-12 {
+    padding: 20px;
+    margin: 20px auto;
+}
+
+#blog_area .blog_section {
+    padding: 30px;
+    background-color: var(--custom-color);;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s, box-shadow 0.5s;
+    
+}
+
+#blog_area .blog_section:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#blog_area .post_details h2 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+#blog_area .post_thumb {
+    overflow: hidden;
+    width: 100%;
+    margin: 30px 0;
+}
+
+#blog_area .post_thumb img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    transition: transform 0.5s;
+}
+
+#blog_area .post_thumb img:hover {
+    transform: scale(1.1);
+}
+
+#blog_area .post_details h2 a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+#blog_area .post_details p {
+    font-size: 18px;
+    color: var(--text-color1);
+}
+
+#blog_area .post_details p.post_meta {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color2);
+    margin-bottom: 20px;
+}
+
+#blog_area .post_details p a.read_more {
+    font-size: 16px;
+    color: var(--text-color1);
+    font-weight: 500;
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    padding: 5px 20px;
+    border-radius: 5px;
+    transition: background-color 0.5s, transform 0.5s;
+}
+
+#blog_area .post_details p a.read_more:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    color: var(--custom-color);;
+}
+
+
+/* =============================================
+    Archive Area Styles
+============================================= */
+
+.page-header {
+    background-color: var(--text-color1);
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--secondary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.page-header .archive-title,
+.page-header .blog-title,
+.page-header .search-title,
+.page-header .single-title,
+.page-header .service-title,
+.page-header .about-title,
+.page-header .contact-title {
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: var(--secondary-color);
+}
+
+.page-header .archive-description,
+.page-header .blog-description,
+.page-header .search-description,
+.page-header .single-description,
+.page-header .service-description,
+.page-header .about-description,
+.page-header .contact-description {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--custom-color);
+    max-width: 800px;
+    margin: 0 auto;
+    letter-spacing: 1.2px;
+    line-height: 1.8;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================
+    Comments Area Styles
+============================================= */
+
+.post_comments h3 {
+    margin-top: 50px;
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+    font-size: 20px;
+    color: var(--custom-color);
+    text-align: left;
+    border-left: 10px solid var(--secondary-color);
+    align-items: center;
+}
+
+footer.comment-meta,
+.comment-metadata a{
+    padding: 30px 0;
+    border-bottom: 1px solid var(--background-color1);
+    margin-bottom: 15px;
+    color: var(--text-color2);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+b.fn {
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.comment-content {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-color1);
+    text-align: left;
+}
+
+.comment-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.comment-content ol {
+    margin-left: 20px;
+    padding-left: 20px;
+    list-style: decimal;
+}
+
+.comment-content ol li {
+    margin-bottom: 5px;
+    color: var(--text-color1);
+}
+
+.comment-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.comment-content a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.reply {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.reply a {
+    color: var(--text-color1);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    background-color: var(--secondary-color);
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+.reply a:hover {
+    color: var(--custom-color);
+    background-color: var(--primary-color);
+}
+
+#reply-title a {
+    color: var(--text-color1);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    background-color: var(--secondary-color);
+    padding: 5px 20px;
+    border-radius: 5px;
+
+}
+
+#reply-title a:hover {
+    color: var(--custom-color);
+    background-color: var(--primary-color);
+}
+
+/* =============================================
+    Comment Form Styles
+============================================= */
+.comment-form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--custom-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.comment-form label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color1);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.comment-form textarea,
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: var(--text-color1);
+    background-color: var(--background-color1);
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.comment-form textarea:focus,
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.comment-form .form-submit .submit {
+    background-color: var(--secondary-color);
+    color: var(--text-color1);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.comment-form .form-submit .submit:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    color: var(--custom-color);
+}
+
+.comment-form .comment-notes,
+.comment-form .required-field-message {
+    font-size: 14px;
+    color: var(--text-color2);
+    margin-bottom: 15px;
+}
+
+.comment-form .comment-form-cookies-consent {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-color2);
+    margin-bottom: 15px;
+}
+
+.comment-form .comment-form-cookies-consent input {
+    margin-right: 10px;
+}
+
+.comment-form .required {
+    color: var(--primary-color);
+}
+
+/* =============================================
+    Pagination Styles
+============================================= */
+#page_nav {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+#page_nav p.pages {
+    color: var(--text-color2);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#page_nav p.pages span {
+    padding: 0 5px;
+}
+
+#page_nav .page-numbers {
+    background: var(--primary-color);
+    color: var(--custom-color);;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    transition: 0.5s;
+}
+
+#page_nav .page-numbers.current,
+#page_nav .page-numbers:hover {
+    background: var(--secondary-color);
+    color: var(--text-color1);
+}
+
+/* =============================================
+    Sidebar Area Styles
+============================================= */
+h2.wp-block-heading {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 20px auto;
+    border-left: 5px solid var(--secondary-color);
+    padding-left: 10px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+
+ul.wp-block-latest-posts__list.wp-block-latest-posts li,
+ul.wp-block-archives-list.wp-block-archives li,
+ol.wp-block-latest-comments li {
+    padding-bottom: 10px;
+}
+
+ul.wp-block-latest-posts__list.wp-block-latest-posts a,
+ul.wp-block-archives-list.wp-block-archives a,
+ol.wp-block-latest-comments a {
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--text-color2);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+ul.wp-block-latest-posts__list.wp-block-latest-posts a:hover,
+ul.wp-block-archives-list.wp-block-archives a:hover,
+ol.wp-block-latest-comments a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.wp-block-tag-cloud a {
+    text-decoration: none;
+    font-size: 16px;
+    font-family: var(--font-family2);
+    color: var(--text-color2);
+    font-weight: 500;
+    background-color: var(--background-color1);
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s, transform 0.5s;
+}
+
+.wp-block-tag-cloud a:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    color: var(--text-color1);
+}
+
+.wp-block-image {
+    margin: 20px auto;
+    max-width: 70%;
+    height: auto;
+}
+
+.wp-block-search {
+    margin-bottom: 30px;
+}
+
+.wp-block-search__input {
+    width: 100%;
+    padding: 5px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--text-color1);
+    background-color: var(--custom-color);;
+    transition: border-color 0.3s;
+}
+
+.wp-block-search__input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.wp-element-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color1);
+    border: none;
+    padding: 3px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.5s, transform 0.5s;
+}
+
+.wp-element-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    color: var(--custom-color);;
+}
+
+/* =============================================
+    Footer Area Styles
+============================================= */
+#footer_area {
+    background-color: var(--text-color1);
+    color: var(--custom-color);;
+    padding: 30px 0;
+    font-family: var(--font-family2);
+}
+
+#footer_area h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 10px;
+    text-transform: uppercase;
+    color: var(--custom-color);;
+}
+
+#footer_area p {
+    margin: 20px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--custom-color);;
+}
+
+#footer_area .col-md-3 {
+    padding: 20px;
+}
+
+#footer_area a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#footer_area a:hover {
+    color: var(--primary-color);
+}
+
+
+
+/* =============================================
+    Copyright Area Styles 
+============================================= */
+#copyright_area {
+    background-color: var(--text-color1);
+    color: var(--custom-color);;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid var(--secondary-color);
+}
+
+#copyright_area a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#copyright_area a:hover {
+    color: var(--primary-color);
+
+}
+
+
+
+/* =============================================
+        Contact form Styles
+============================================= */
+
+#contact-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 50px;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color1);
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contact-form input[type="submit"] {
+    background-color: var(--secondary-color);
+    color: var(--text-color1);
+    border: none;
+    cursor: pointer;
+}
+
+#contact-form input[type="submit"]:hover {
+    background-color: var(--primary-color);
+    color: var(--custom-color);
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+
+/* =============================================
+    404 Error Page Styles
+============================================= */
+.error-404.not-found {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: var(--background-color1);
+    color: var(--text-color1);
+}
+
+.error-404.not-found h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-404.not-found p {
+    font-size: 18px;
+    color: var(--text-color2);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.error-404.not-found .search-form-container {
+    margin: 20px auto;
+}
+
+.error-404.not-found .search-form-container input[type="search"] {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: var(--text-color1);
+    background-color: var(--custom-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    width: 500px;
+    margin-right: 20px;;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.error-404.not-found .search-form-container input[type="search"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.error-404.not-found .search-form-container input[type="submit"] {
+    background-color: var(--secondary-color);
+    color: var(--text-color1);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.error-404.not-found .search-form-container input[type="submit"]:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    color: var(--custom-color);
+}
+
+.error-404.not-found .custom-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--custom-color);
+    background-color: var(--primary-color);
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.error-404.not-found .custom-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    color: var(--text-color1);
+}
